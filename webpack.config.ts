@@ -26,7 +26,15 @@ const webpackConfig = (env): Configuration => ({
                     transpileOnly: true
                 },
                 exclude: /dist/
-            }
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader",
+                ],
+            },
         ]
     },
     plugins: [
