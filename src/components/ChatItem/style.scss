@@ -1,0 +1,28 @@
+@import "src/theme/main";
+
+$chat-item-height: 56px;
+$chat-item-image-size: 40px;
+.chat-item {
+  width: calc(100% - 32px);
+  height: $chat-item-height;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid $border-color;
+  &__image {
+    width: $chat-item-image-size;
+    height: $chat-item-image-size;
+    border-radius: 100%;
+  }
+  &__content {
+    margin-left: 8px;
+  }
+  &__name {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  &__caption {
+    font-size: 14px;
+    color: $gray-color;
+  }
+}

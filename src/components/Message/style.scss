@@ -1,0 +1,16 @@
+@import "src/theme/main";
+
+$message-max-width: 100px;
+
+.message {
+  padding: 8px;
+  background-color: $message-color;
+  border-radius: 16px;
+  width: fit-content;
+  max-width: $message-max-width;
+  margin: 8px 16px;
+
+  &_self {
+    align-self: flex-end;
+  }
+}

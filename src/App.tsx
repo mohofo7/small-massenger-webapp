@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import Routes from "./routes";
+import { Routes, DesktopRoutes } from "./routes";
 import { useMediaQuery } from "./utils/useMediaQuery";
 import "./theme/main.scss";
 
@@ -9,7 +9,8 @@ const App: React.FC = () => {
   return (
     <Router>
       {/*{!isSmallScreen && <SideBar />}*/}
-      <Routes small={isSmallScreen} />
+      {isSmallScreen && <Routes />}
+      {!isSmallScreen && <DesktopRoutes />}
     </Router>
   );
 };

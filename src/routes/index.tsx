@@ -1,23 +1,31 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
+import ChatList from "src/pages/ChatList";
+import ChatPage from "src/pages/ChatPage";
 
-interface IRoutes {
-  small: boolean;
-}
-
-const Routes: React.FC<IRoutes> = ({ small }) => {
+export const Routes: React.FC = () => {
   return (
     <Switch>
-      {small && (
-        <Fragment>
-          <Route path="/">{/*<ChatList />*/}</Route>
-          <Route path="/contacts">{/*<ContactList />*/}</Route>
-        </Fragment>
-      )}
-      <Route path="/chats/:id">{/*<ChatPage />*/}</Route>
+      <Route path="/" exact>
+        <ChatList />
+      </Route>
+      <Route path="/contacts">{/*<ContactList />*/}</Route>
+      <Route path="/chats/:id">
+        <ChatPage />
+      </Route>
       <Route path="/contacts/:id">{/*<ContactPage />*/}</Route>
     </Switch>
   );
 };
 
-export default Routes;
+export const DesktopRoutes: React.FC = () => (
+  <Switch>
+    <Route path="/" exact>
+      {/*<EmptyPage />*/}
+    </Route>
+    <Route path="/chats/:id">
+      <ChatPage />
+    </Route>
+    <Route path="/contacts/:id">{/*<ContactPage />*/}</Route>
+  </Switch>
+);
