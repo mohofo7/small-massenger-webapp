@@ -2,6 +2,9 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import ChatList from "src/pages/ChatList";
 import ChatPage from "src/pages/ChatPage";
+import ContactList from "src/pages/Contacts";
+import AddContact from "src/pages/AddContact";
+import ContactPage from "src/pages/ContactPage";
 
 export const Routes: React.FC = () => {
   return (
@@ -9,11 +12,18 @@ export const Routes: React.FC = () => {
       <Route path="/" exact>
         <ChatList />
       </Route>
-      <Route path="/contacts">{/*<ContactList />*/}</Route>
+      <Route path="/contacts/add" exact>
+        <AddContact />
+      </Route>
+      <Route path="/contacts/:id">
+        <ContactPage />
+      </Route>
+      <Route path="/contacts">
+        <ContactList />
+      </Route>
       <Route path="/chats/:id">
         <ChatPage />
       </Route>
-      <Route path="/contacts/:id">{/*<ContactPage />*/}</Route>
     </Switch>
   );
 };

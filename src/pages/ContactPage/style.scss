@@ -1,0 +1,28 @@
+@import "src/theme/variables";
+
+.contact-page {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      width: 150px;
+      height: 150px;
+      object-position: center;
+      object-fit: cover;
+    }
+  }
+  &__name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 8px;
+  }
+  &__message-btn {
+    font-weight: bold;
+    margin-top: 24px;
+    padding: 8px 16px;
+    background-color: $blue-color;
+    color: white;
+    border-radius: 8px;
+  }
+}

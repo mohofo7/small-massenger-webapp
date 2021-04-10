@@ -1,0 +1,22 @@
+@import "src/theme/variables";
+
+.contacts {
+  &__back-btn {
+    width: 24px;
+    height: 24px;
+    padding: 16px;
+  }
+  &__title {
+    font-weight: bold;
+  }
+  &__add-btn {
+    width: 24px;
+    height: 24px;
+    padding: 16px;
+    margin-left: auto;
+  }
+  &__empty {
+    text-align: center;
+    margin-top: 32px;
+  }
+}

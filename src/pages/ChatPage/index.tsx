@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Message from "components/Message";
 import "./style.scss";
 import Input from "components/Input";
+import { sendMessage } from "../../store/reducer/Contacts";
 
 // interface IChatPage {}
 interface IMatch {
@@ -11,6 +12,15 @@ interface IMatch {
 
 const ChatPage: React.FC = () => {
   const { id } = useParams<IMatch>();
+
+  const sendNewMessage = (message) => {
+    sendMessage(id, {
+      content: message,
+      date: new Date(),
+      self: true
+    });
+  };
+
   return (
     <Fragment>
       <div className="chat-page__header">{/*<ContactItem />*/}</div>
@@ -26,7 +36,7 @@ const ChatPage: React.FC = () => {
             />
           ))}
       </div>
-      <Input className="chat-page__input" />
+      <Input className="chat-page__input" sendMessage={sendNewMessage} />
     </Fragment>
   );
 };

@@ -26,7 +26,7 @@ interface IAction {
   payload: IContact | string | ISendMessageAction;
 }
 
-export default (state: Array<IContact>, action: IAction): Array<IContact> => {
+export default (state: Array<IContact> = [], action: IAction): Array<IContact> => {
   switch (action.type) {
     case ADD_CONTACT:
       return [...state, action.payload as IContact];

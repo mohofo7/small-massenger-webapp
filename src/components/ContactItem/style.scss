@@ -1,0 +1,22 @@
+@import "src/theme/variables";
+
+$contact-item-height: 56px;
+$contact-item-image-size: 40px;
+.contact-item {
+  width: calc(100% - 32px);
+  height: $contact-item-height;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid $border-color;
+  &__image {
+    width: $contact-item-image-size;
+    height: $contact-item-image-size;
+    border-radius: 100%;
+  }
+  &__name {
+    margin-left: 8px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+}

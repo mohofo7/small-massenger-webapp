@@ -10,3 +10,29 @@ body {
   padding: 0;
   font-family: 'Open Sans', sans-serif;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.header {
+  position: sticky;
+  width: 100%;
+  height: $header-height;
+  background-color: $header-background;
+  display: flex;
+  align-items: center;
+}
