@@ -1,4 +1,5 @@
 @import "src/theme/variables";
+@import "src/theme/theme";
 
 $input-height: 40px;
 
@@ -6,12 +7,12 @@ $input-height: 40px;
   width: calc(100% - 32px);
   height: $input-height;
   padding: 8px 16px 16px;
-  background-color: $input-background;
 
   &__wrapper {
     width: 100%;
     height: 100%;
-    border: 1px solid $border-color;
+    border: 1px solid;
+    @include theme-aware('border-color', 'border-color');
     border-radius: $input-height / 2;
     display: flex;
   }
@@ -28,6 +29,6 @@ $input-height: 40px;
   }
   &__send-icon {
     width: 24px;
-    fill: $blue-color;
+    fill: $blue-color !important;
   }
 }

@@ -1,4 +1,5 @@
 @import "variables";
+@import "theme";
 
 html {
   margin: 0;
@@ -9,11 +10,21 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
-}
 
-a {
-  text-decoration: none;
-  color: black;
+  // theming
+  @include theme-aware('background-color', 'background');
+  @include theme-aware('color', 'text-color');
+
+  svg {
+    @include theme-aware('fill', 'text-color');
+  }
+  a {
+    text-decoration: none;
+    @include theme-aware('color', 'text-color');
+  }
+  input {
+    @include theme-aware('color', 'text-color');
+  }
 }
 
 .d-flex {
@@ -33,7 +44,6 @@ a {
   top: 0;
   width: 100%;
   height: $header-height;
-  background-color: $header-background;
   display: flex;
   align-items: center;
 }

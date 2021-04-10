@@ -1,26 +1,26 @@
-import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import configStore from "./store/configStore";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { IStore } from "./store/configStore";
+import { Theme } from "./store/reducer/theme";
 import { Routes } from "./routes";
 import DesktopContainer from "./pages/DesktopContainer";
 import { useMediaQuery } from "./utils/useMediaQuery";
 import "./theme/main.scss";
 
-const { persistor, store } = configStore();
-
 const App: React.FC = () => {
   const isSmallScreen = useMediaQuery("(max-width: 600px)");
+  const theme = useSelector<IStore, Theme>((state) => state.theme);
+
+  useEffect(() => {
+    document.documentElement.className = "";
+    document.documentElement.classList.add(`theme_${theme.toLowerCase()}`);
+  }, [theme]);
+
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <Router>
-          {isSmallScreen && <Routes />}
-          {!isSmallScreen && <DesktopContainer />}
-        </Router>
-      </PersistGate>
-    </Provider>
+    <div>
+      {isSmallScreen && <Routes />}
+      {!isSmallScreen && <DesktopContainer />}
+    </div>
   );
 };
 

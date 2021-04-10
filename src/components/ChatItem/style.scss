@@ -1,4 +1,5 @@
 @import "src/theme/variables";
+@import "src/theme/theme";
 
 $chat-item-height: 56px;
 $chat-item-image-size: 40px;
@@ -8,9 +9,10 @@ $chat-item-image-size: 40px;
   display: flex;
   align-items: center;
   padding: 0 16px;
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid;
+  @include theme-aware('border-color', 'border-color');
   &_focused {
-    background-color: $message-self-color;
+    @include theme-aware('background-color', 'item-focused');
   }
   &__image {
     width: $chat-item-image-size;

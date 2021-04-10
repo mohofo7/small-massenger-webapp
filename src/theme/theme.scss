@@ -1,0 +1,28 @@
+@import "variables";
+
+$themes: (
+  default: (
+    background: $light-background,
+    text-color: black,
+    border-color: $border-color,
+    item-focused: $item-focused,
+    message-color: $message-color,
+    message-color-self: $message-color-self,
+  ),
+  dark: (
+    background: $dark-background,
+    text-color: white,
+    border-color: $dark-border-color,
+    item-focused: $dark-item-focused,
+    message-color: $dark-message-color,
+    message-color-self: $dark-message-color-self,
+  )
+);
+
+@mixin theme-aware($key, $color) {
+  @each $theme-name, $theme-color in $themes {
+    .theme_#{$theme-name} & {
+      #{$key}: map-get(map-get($themes, $theme-name), $color);
+    }
+  }
+}

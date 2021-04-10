@@ -1,17 +1,18 @@
 @import "src/theme/variables";
+@import "src/theme/theme";
 
 $message-max-width: 150px;
 
 .message {
   padding: 8px;
-  background-color: $message-color;
+  @include theme-aware('background-color', 'message-color');
   border-radius: 16px;
   width: fit-content;
   max-width: $message-max-width;
   margin: 4px 16px;
 
   &_self {
-    background-color: $message-self-color;
+    @include theme-aware('background-color', 'message-color-self');
   }
 
   &__wrapper {

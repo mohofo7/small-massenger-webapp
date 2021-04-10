@@ -1,4 +1,5 @@
 @import "src/theme/variables";
+@import "src/theme/theme";
 
 .add-contact {
   &__input-wrapper {
@@ -10,7 +11,9 @@
     margin: 16px auto;
     display: block;
     border: none;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid;
+    background: transparent;
+    @include theme-aware('border-color', 'border-color');
   }
   &__icon {
     width: 150px;
@@ -19,7 +22,8 @@
     margin: 0 auto;
     object-fit: cover;
     object-position: center;
-    border: 1px solid $border-color;
+    border: 1px solid;
+    @include theme-aware('border-color', 'border-color');
     &_default {}
   }
   &__file-input {

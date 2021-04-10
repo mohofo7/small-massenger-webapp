@@ -1,9 +1,11 @@
 @import "src/theme/variables";
+@import "src/theme/theme";
 
 .chat-page {
   height: 100vh;
   .header {
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid;
+    @include theme-aware('border-color', 'border-color');
   }
   .contact-item {
     border-bottom: none;
