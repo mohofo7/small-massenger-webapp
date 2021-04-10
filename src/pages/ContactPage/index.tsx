@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useMediaQuery } from "src/utils/useMediaQuery";
 import { deleteContact, IContact } from "src/store/reducer/Contacts";
 import Back from "src/assets/images/arrow.svg";
 import TrashIcon from "src/assets/images/trash.svg";
@@ -11,6 +12,7 @@ const ContactPage: React.FC = () => {
   const contact = useSelector<{ contacts: Array<IContact> }, IContact>((state) =>
     state.contacts.find((con) => con.id === id)
   );
+  const isSmallScreen = useMediaQuery("(max-width: 600px)");
   const history = useHistory();
   const dispatch = useDispatch();
   const removeContact = () => {
@@ -22,9 +24,11 @@ const ContactPage: React.FC = () => {
   return (
     <div>
       <div className="header">
-        <Link to="/contacts" className="d-flex">
-          <Back className="contacts__back-btn" />
-        </Link>
+        {isSmallScreen && (
+          <Link to="/contacts" className="d-flex">
+            <Back className="contacts__back-btn" />
+          </Link>
+        )}
         <div className="ml-auto" onClick={removeContact}>
           <TrashIcon className="contacts__add-btn" />
         </div>

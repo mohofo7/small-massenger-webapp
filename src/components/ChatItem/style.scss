@@ -9,6 +9,9 @@ $chat-item-image-size: 40px;
   align-items: center;
   padding: 0 16px;
   border-bottom: 1px solid $border-color;
+  &_focused {
+    background-color: $message-self-color;
+  }
   &__image {
     width: $chat-item-image-size;
     height: $chat-item-image-size;

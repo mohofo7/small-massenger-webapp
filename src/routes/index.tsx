@@ -28,14 +28,29 @@ export const Routes: React.FC = () => {
   );
 };
 
+export const SideBarRoutes: React.FC = () => (
+  <Switch>
+    <Route path="/contacts/add" exact>
+      <AddContact />
+    </Route>
+    <Route path="/contacts">
+      <ContactList />
+    </Route>
+    <Route path="/">
+      <ChatList />
+    </Route>
+  </Switch>
+);
+
 export const DesktopRoutes: React.FC = () => (
   <Switch>
-    <Route path="/" exact>
-      {/*<EmptyPage />*/}
-    </Route>
     <Route path="/chats/:id">
       <ChatPage />
     </Route>
-    <Route path="/contacts/:id">{/*<ContactPage />*/}</Route>
+    <Route path="/contacts/add" />
+    <Route path="/contacts/:id">
+      <ContactPage />
+    </Route>
+    <Route>{/*<EmptyPage />*/}</Route>
   </Switch>
 );

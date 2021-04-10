@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import { IContact } from "src/store/reducer/Contacts";
 import ChatItem from "src/components/ChatItem";
 import UserIcon from "src/assets/images/user.svg";
@@ -16,6 +16,7 @@ const ChatList: React.FC = () => {
   const contacts = useSelector<{ contacts: Array<IContact> }, Array<IContact>>((state) =>
     state.contacts.filter((contact) => contact.messages.length > 0)
   );
+  const match = useRouteMatch<{ id: string }>("/chats/:id");
 
   return (
     <div>
@@ -31,6 +32,7 @@ const ChatList: React.FC = () => {
             pic={contact.picture}
             name={contact.name}
             caption={contact.messages[0].content}
+            focused={contact.id === match?.params?.id}
           />
         </Link>
       ))}

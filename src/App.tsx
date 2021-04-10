@@ -3,7 +3,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import configStore from "./store/configStore";
-import { Routes, DesktopRoutes } from "./routes";
+import { Routes } from "./routes";
+import DesktopContainer from "./pages/DesktopContainer";
 import { useMediaQuery } from "./utils/useMediaQuery";
 import "./theme/main.scss";
 
@@ -15,9 +16,8 @@ const App: React.FC = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Router>
-          {/*{!isSmallScreen && <SideBar />}*/}
           {isSmallScreen && <Routes />}
-          {!isSmallScreen && <DesktopRoutes />}
+          {!isSmallScreen && <DesktopContainer />}
         </Router>
       </PersistGate>
     </Provider>

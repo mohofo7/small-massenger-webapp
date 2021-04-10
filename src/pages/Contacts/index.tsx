@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IContact } from "src/store/reducer/Contacts";
 import ContactItem from "src/components/ContactItem";
@@ -11,6 +11,7 @@ const Contacts: React.FC = () => {
   const contacts = useSelector<{ contacts: Array<IContact> }, Array<IContact>>(
     (state) => state.contacts
   );
+  const match = useRouteMatch<{ id: string }>("/contacts/:id");
 
   return (
     <div className="contacts">
@@ -27,7 +28,11 @@ const Contacts: React.FC = () => {
         {contacts && contacts.length ? (
           contacts.map((contact) => (
             <Link to={`/contacts/${contact.id}`} key={contact.id}>
-              <ContactItem picture={contact.picture} name={contact.name} />
+              <ContactItem
+                picture={contact.picture}
+                name={contact.name}
+                focused={contact.id === match?.params?.id}
+              />
             </Link>
           ))
         ) : (

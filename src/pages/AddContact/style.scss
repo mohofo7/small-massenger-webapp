@@ -5,7 +5,7 @@
     margin: 32px 16px;
   }
   &__name-input {
-    width: 50vw;
+    width: min(50vw, 250px);
     font-size: 16px;
     margin: 16px auto;
     display: block;
