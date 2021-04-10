@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import UserIcon from "src/assets/images/user.svg";
 import "./style.scss";
 
 interface IContactItem {
@@ -9,9 +10,18 @@ interface IContactItem {
 
 const ContactItem: React.FC<IContactItem> = (props) => {
   const { picture, name, focused } = props;
+  const [iconFallback, setIconFallback] = useState<boolean>(false);
   return (
     <div className={`contact-item ${focused ? "contact-item_focused" : ""}`}>
-      <img className="contact-item__image" src={picture} alt={name} />
+      {!iconFallback && (
+        <img
+          className="contact-item__image"
+          src={picture}
+          alt={name}
+          onError={() => setIconFallback(true)}
+        />
+      )}
+      {iconFallback && <UserIcon className="contact-item__image" />}
       <div className="contact-item__name">{name}</div>
     </div>
   );

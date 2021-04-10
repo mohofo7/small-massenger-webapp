@@ -14,15 +14,17 @@ const AddContact: React.FC = () => {
   const history = useHistory();
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      addContact({
-        name,
-        picture: file,
-        id: `${Date.now()}`,
-        messages: []
-      })
-    );
-    history.push("/contacts");
+    if (name.length > 0) {
+      dispatch(
+        addContact({
+          name,
+          picture: file,
+          id: `${Date.now()}`,
+          messages: []
+        })
+      );
+      history.push("/contacts");
+    } else alert("Please insert name for your contact!");
   };
   return (
     <div className="add-contact">
@@ -50,7 +52,7 @@ const AddContact: React.FC = () => {
         />
         <input
           className="add-contact__name-input"
-          placeholder="Name"
+          placeholder="Name (required)"
           type="text"
           value={name}
           onChange={(event) => setName(event.target.value)}
