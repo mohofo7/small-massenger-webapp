@@ -42,7 +42,10 @@ export default (state: Array<IContact> = [], action: IAction): Array<IContact> =
       const i = state.findIndex(
         (contact) => contact.id === (action.payload as ISendMessageAction).id
       );
-      state[i].messages = [...state[i].messages, (action.payload as ISendMessageAction).message];
+      state[i] = {
+        ...state[i],
+        messages: [(action.payload as ISendMessageAction).message, ...state[i].messages]
+      };
       return [...state];
     default:
       return state;

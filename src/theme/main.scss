@@ -30,6 +30,7 @@ a {
 
 .header {
   position: sticky;
+  top: 0;
   width: 100%;
   height: $header-height;
   background-color: $header-background;

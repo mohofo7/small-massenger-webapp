@@ -1,19 +1,27 @@
 @import "src/theme/variables";
 
-.chat-page__header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 56px;
-  background-color: $header-background;
+.chat-page {
+  height: 100vh;
+  .header {
+    border-bottom: 1px solid $border-color;
+  }
+  .contact-item {
+    border-bottom: none;
+  }
 }
 
 .chat-page__list {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.chat-page__body {
+  height: calc(100% - 64px - 56px);
 }
 
 .chat-page__input {
-  position: sticky;
+  position: fixed;
   bottom: 0;
 }

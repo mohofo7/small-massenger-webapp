@@ -1,21 +1,42 @@
 import React from "react";
-import ChatItem from "components/ChatItem";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { IContact } from "src/store/reducer/Contacts";
+import ChatItem from "src/components/ChatItem";
+import UserIcon from "src/assets/images/user.svg";
+import "./style.scss";
 
-// interface IChatList {}
+const contactSortByLastMessage = (contact1: IContact, contact2: IContact): number => {
+  if (contact1.messages[0].date === contact2.messages[0].date) return 0;
+  else if (contact1.messages[0].date < contact2.messages[0].date) return 1;
+  else return -1;
+};
 
 const ChatList: React.FC = () => {
+  const contacts = useSelector<{ contacts: Array<IContact> }, Array<IContact>>((state) =>
+    state.contacts.filter((contact) => contact.messages.length > 0)
+  );
+
   return (
     <div>
-      {Array(5)
-        .fill(0)
-        .map((value, index) => (
+      <div className="header">
+        <div className="chat-list__title">Small Messenger</div>
+        <Link to="/contacts" className="ml-auto d-flex">
+          <UserIcon className="chat-list__contact-icon" />
+        </Link>
+      </div>
+      {contacts.sort(contactSortByLastMessage).map((contact) => (
+        <Link to={`/chats/${contact.id}`} key={contact.id}>
           <ChatItem
-            key={index}
-            pic="https://avatars.githubusercontent.com/u/39581812"
-            name="Mohammad"
-            lastMessage="hey there !!"
+            pic={contact.picture}
+            name={contact.name}
+            caption={contact.messages[0].content}
           />
-        ))}
+        </Link>
+      ))}
+      {contacts.length <= 0 && (
+        <div className="chat-list__empty">Start messaging to your contacts</div>
+      )}
     </div>
   );
 };

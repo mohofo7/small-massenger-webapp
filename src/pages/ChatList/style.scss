@@ -1,0 +1,16 @@
+.chat-list {
+  &__title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 16px;
+  }
+  &__contact-icon {
+    width: 24px;
+    height: 24px;
+    padding: 16px;
+  }
+  &__empty {
+    text-align: center;
+    margin-top: 32px;
+  }
+}

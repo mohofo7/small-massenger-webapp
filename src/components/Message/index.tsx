@@ -1,11 +1,6 @@
 import React from "react";
+import { IMessage } from "src/store/reducer/Contacts";
 import "./style.scss";
-
-interface IMessage {
-  content: string;
-  date: string;
-  self: boolean;
-}
 
 const Message: React.FC<IMessage> = (props) => {
   const { content, date, self } = props;

@@ -27,7 +27,7 @@ const AddContact: React.FC = () => {
   return (
     <div className="add-contact">
       <div className="header">
-        <Link to="/" className="d-flex">
+        <Link to="/contacts" className="d-flex">
           <Back className="contacts__back-btn" />
         </Link>
         <div className="contacts__title">Add new Contact</div>
